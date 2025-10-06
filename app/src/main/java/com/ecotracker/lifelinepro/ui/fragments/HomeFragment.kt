@@ -220,9 +220,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun animateProgress(progressBar: android.widget.ProgressBar, targetProgress: Int) {
-        ObjectAnimator.ofInt(progressBar, "progress", 0, targetProgress)
-            .setDuration(800)
-            .start()
+        // Only animate if there's a significant change to avoid unnecessary animations
+        if (kotlin.math.abs(progressBar.progress - targetProgress) > 5) {
+            ObjectAnimator.ofInt(progressBar, "progress", progressBar.progress, targetProgress)
+                .setDuration(400) // Reduced duration for better performance
+                .start()
+        } else {
+            progressBar.progress = targetProgress
+        }
     }
 
     override fun onResume() {

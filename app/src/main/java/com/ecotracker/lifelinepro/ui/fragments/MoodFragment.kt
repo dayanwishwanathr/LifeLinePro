@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ecotracker.lifelinepro.R
 import com.ecotracker.lifelinepro.adapters.MoodAdapter
 import com.ecotracker.lifelinepro.adapters.MoodSelectorAdapter
-import com.ecotracker.lifelinepro.adapters.MoodCalendarAdapter
 import com.ecotracker.lifelinepro.data.models.MoodEntry
 import com.ecotracker.lifelinepro.data.repository.SharedPreferencesManager
 import com.ecotracker.lifelinepro.databinding.DialogMoodSelectorBinding
@@ -197,8 +196,6 @@ class MoodFragment : Fragment() {
             }
         }
         
-        // Update calendar with mood data (for future enhancement)
-        updateCalendarMoodIndicators(entries)
         
         // Update statistics
         updateStatistics(entries)
@@ -619,12 +616,6 @@ class MoodFragment : Fragment() {
             .show()
     }
 
-    private fun updateCalendarMoodIndicators(entries: List<MoodEntry>) {
-        // This method is for future enhancement to show mood indicators on calendar dates
-        // For now, the standard CalendarView doesn't support custom date indicators
-        // In a future version, we could implement a custom calendar view with mood emojis
-        // on specific dates
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
