@@ -170,32 +170,7 @@ app/src/main/
    - Connect an Android device or start an emulator
    - Click the "Run" button (▶️) or press Shift+F10
    - Grant notification permissions when prompted
-
-## 📋 Assignment Requirements Checklist
-
-### Functionality (3 Marks)
-- ✅ **Daily Habit Tracker**: Add, edit, delete habits with progress tracking
-- ✅ **Mood Journal with Emoji Selector**: Log moods with emojis and notes
-- ✅ **Hydration Reminder**: WorkManager-based notification system
-
-### Code Quality & Organization (2 Marks)
-- ✅ Well-organized code with clear naming conventions
-- ✅ Proper use of functions and classes
-- ✅ No redundant or unnecessary code
-- ✅ Comprehensive documentation and comments
-
-### Creativity & User Interface Design (2 Marks)
-- ✅ Clean, intuitive, and user-friendly design
-- ✅ Modern Material Design 3 components
-- ✅ Responsive layouts for different screen sizes and orientations
-- ✅ Smooth animations and transitions
-
-### Advanced Features & Data Persistence (3 Marks)
-- ✅ **Home Screen Widget**: Shows daily habit completion percentage
-- ✅ **Mood Trend Chart**: MPAndroidChart visualization
-- ✅ **SharedPreferences**: Effective data persistence for all features
-- ✅ **Additional Features**: Export data, settings management, dark mode support
-
+  
 ## 🎯 Key Learning Outcomes
 
 This project demonstrates proficiency in:
