@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/surface"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/surface_variant">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Habit Icon -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iconCard"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/surface_variant"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/habitIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_habits"
+                app:tint="@color/text_secondary" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Progress Badge (top right) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/progressBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFD700"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/badgeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="0"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Habit Details (Name, Category, Target) -->
+        <LinearLayout
+            android:id="@+id/detailsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@+id/iconCard"
+            app:layout_constraintBottom_toBottomOf="@+id/iconCard"
+            app:layout_constraintStart_toEndOf="@+id/iconCard"
+            app:layout_constraintEnd_toStartOf="@+id/progressBadge">
+
+            <!-- Habit Name -->
+            <TextView
+                android:id="@+id/habitName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/text_primary"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="asdasdasd" />
+
+            <!-- Category -->
+            <TextView
+                android:id="@+id/habitCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                tools:text="Personal" />
+
+            <!-- Target -->
+            <TextView
+                android:id="@+id/targetText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                tools:text="Target: 1 times" />
+
+        </LinearLayout>
+
+        <!-- Progress Text -->
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            tools:text="Progress: 0/1 times"
+            app:layout_constraintTop_toBottomOf="@+id/iconCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/habitProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="6dp"
+            android:progressDrawable="@drawable/bg_progress_rounded"
+            android:max="100"
+            tools:progress="0"
+            app:layout_constraintTop_toBottomOf="@+id/progressText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Action Buttons Row -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/habitProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Mark Complete Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMarkComplete"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Mark Complete"
+                android:textSize="12sp"
+                app:cornerRadius="10dp"
+                android:paddingVertical="8dp" />
+
+            <!-- Edit Button -->
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_edit"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/edit_habit"
+                app:tint="@color/text_secondary" />
+
+            <!-- Share Button -->
+            <ImageButton
+                android:id="@+id/btnShare"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_data"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Share"
+                app:tint="@color/text_secondary" />
+
+            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/ic_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/delete_habit"
+                app:tint="@color/error" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

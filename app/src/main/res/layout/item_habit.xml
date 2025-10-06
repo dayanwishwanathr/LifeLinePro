@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_medium"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/surface">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Habit Icon with Colorful Background -->
+        <View
+            android:id="@+id/iconBackground"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/gradient_primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/habitIcon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_habits"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="@+id/iconBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/iconBackground"
+            app:layout_constraintStart_toStartOf="@+id/iconBackground"
+            app:layout_constraintEnd_toEndOf="@+id/iconBackground" />
+
+        <!-- Habit Name -->
+        <TextView
+            android:id="@+id/habitName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:textAppearance="@style/TextAppearance.LifeLinePro.Body"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Drink Water"
+            app:layout_constraintTop_toTopOf="@+id/iconBackground"
+            app:layout_constraintStart_toEndOf="@+id/iconBackground"
+            app:layout_constraintEnd_toStartOf="@+id/progressText" />
+
+        <!-- Progress Text -->
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/primary"
+            tools:text="3/8"
+            app:layout_constraintTop_toTopOf="@+id/habitName"
+            app:layout_constraintBottom_toBottomOf="@+id/habitName"
+            app:layout_constraintEnd_toStartOf="@+id/btnIncrement" />
+
+        <!-- Completion Badge -->
+        <ImageView
+            android:id="@+id/completionBadge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:src="@drawable/ic_habits"
+            android:visibility="gone"
+            app:tint="@color/success"
+            app:layout_constraintTop_toTopOf="@+id/habitName"
+            app:layout_constraintBottom_toBottomOf="@+id/habitName"
+            app:layout_constraintEnd_toStartOf="@+id/btnIncrement"
+            tools:visibility="visible" />
+
+        <!-- Enhanced Progress Bar with Rounded Corners -->
+        <ProgressBar
+            android:id="@+id/habitProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:progressDrawable="@drawable/bg_progress_rounded"
+            android:max="100"
+            tools:progress="37"
+            app:layout_constraintTop_toBottomOf="@+id/iconBackground"
+            app:layout_constraintStart_toStartOf="@+id/iconBackground"
+            app:layout_constraintEnd_toStartOf="@+id/actionButtons"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Action Buttons Group -->
+        <LinearLayout
+            android:id="@+id/actionButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Edit Button -->
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/spacing_tiny"
+                android:src="@drawable/ic_edit"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/edit_habit"
+                app:tint="@color/text_secondary" />
+
+            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:src="@drawable/ic_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/delete_habit"
+                app:tint="@color/error" />
+
+            <!-- Increment Button with Gradient -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnIncrement"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:text="+"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="28dp"
+                app:elevation="4dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
