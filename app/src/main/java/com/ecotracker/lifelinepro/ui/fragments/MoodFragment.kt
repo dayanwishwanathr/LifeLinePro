@@ -16,6 +16,7 @@ import com.ecotracker.lifelinepro.data.models.MoodEntry
 import com.ecotracker.lifelinepro.data.repository.SharedPreferencesManager
 import com.ecotracker.lifelinepro.databinding.DialogMoodSelectorBinding
 import com.ecotracker.lifelinepro.databinding.FragmentMoodBinding
+import com.ecotracker.lifelinepro.widget.HabitProgressWidget
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -319,6 +320,9 @@ class MoodFragment : Fragment() {
                     prefsManager.addMoodEntry(entry)
                     loadMoodEntries(scrollToTop = true)
                     
+                    // Update widget
+                    HabitProgressWidget.updateAllWidgets(requireContext())
+                    
                     // Refresh calendar view if it's currently active
                     if (isCalendarView) {
                         loadMoodsForSelectedDate(binding.moodCalendarView.date)
@@ -563,6 +567,9 @@ class MoodFragment : Fragment() {
                     prefsManager.updateMoodEntry(updatedEntry)
                     loadMoodEntries(scrollToTop = false)
                     
+                    // Update widget
+                    HabitProgressWidget.updateAllWidgets(requireContext())
+                    
                     // Refresh calendar view if it's currently active
                     if (isCalendarView) {
                         loadMoodsForSelectedDate(binding.moodCalendarView.date)
@@ -606,6 +613,9 @@ class MoodFragment : Fragment() {
             .setPositiveButton(R.string.delete) { _, _ ->
                 prefsManager.deleteMoodEntry(entry.id)
                 loadMoodEntries()
+                
+                // Update widget
+                HabitProgressWidget.updateAllWidgets(requireContext())
                 
                 // Refresh calendar view if it's currently active
                 if (isCalendarView) {

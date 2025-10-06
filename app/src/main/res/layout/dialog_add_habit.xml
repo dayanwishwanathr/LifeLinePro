@@ -15,9 +15,10 @@
             android:id="@+id/dialogTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
             android:text="@string/add_habit"
             android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-            android:layout_marginBottom="@dimen/spacing_medium" />
+            android:textStyle="bold" />
 
         <!-- Habit Name -->
         <com.google.android.material.textfield.TextInputLayout

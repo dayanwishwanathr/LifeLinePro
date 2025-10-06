@@ -13,6 +13,7 @@ import com.ecotracker.lifelinepro.data.models.Habit
 import com.ecotracker.lifelinepro.data.repository.SharedPreferencesManager
 import com.ecotracker.lifelinepro.databinding.DialogAddHabitBinding
 import com.ecotracker.lifelinepro.databinding.FragmentHabitsBinding
+import com.ecotracker.lifelinepro.widget.HabitProgressWidget
 import java.util.Date
 import java.util.UUID
 
@@ -173,6 +174,8 @@ class HabitsFragment : Fragment() {
                     
                     prefsManager.addHabit(habit)
                     loadHabits()
+                    // Update widget
+                    HabitProgressWidget.updateAllWidgets(requireContext())
                     dismiss()
                 }
                 show()
@@ -232,6 +235,8 @@ class HabitsFragment : Fragment() {
                     
                     prefsManager.updateHabit(updatedHabit)
                     loadHabits()
+                    // Update widget
+                    HabitProgressWidget.updateAllWidgets(requireContext())
                     dismiss()
                 }
                 show()
@@ -248,6 +253,8 @@ class HabitsFragment : Fragment() {
         
         prefsManager.updateHabit(updatedHabit)
         loadHabits()
+        // Update widget
+        HabitProgressWidget.updateAllWidgets(requireContext())
         
         if (updatedHabit.isCompleted && !habit.isCompleted) {
             // Show celebration with custom toast
@@ -281,6 +288,8 @@ class HabitsFragment : Fragment() {
             .setPositiveButton(R.string.delete) { _, _ ->
                 prefsManager.deleteHabit(habit.id)
                 loadHabits()
+                // Update widget
+                HabitProgressWidget.updateAllWidgets(requireContext())
             }
             .setNegativeButton(R.string.cancel, null)
             .show()

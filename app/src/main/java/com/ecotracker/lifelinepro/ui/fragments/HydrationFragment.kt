@@ -14,6 +14,7 @@ import com.ecotracker.lifelinepro.data.models.HydrationIntake
 import com.ecotracker.lifelinepro.data.repository.SharedPreferencesManager
 import com.ecotracker.lifelinepro.databinding.DialogAddWaterBinding
 import com.ecotracker.lifelinepro.databinding.FragmentHydrationBinding
+import com.ecotracker.lifelinepro.widget.HabitProgressWidget
 import com.ecotracker.lifelinepro.utils.HydrationReminderScheduler
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -210,6 +211,9 @@ class HydrationFragment : Fragment() {
         prefsManager.addHydrationIntake(intake)
         loadHydrationData()
         
+        // Update widget
+        HabitProgressWidget.updateAllWidgets(requireContext())
+        
         android.widget.Toast.makeText(
             requireContext(),
             R.string.water_added,
@@ -224,6 +228,8 @@ class HydrationFragment : Fragment() {
             .setPositiveButton(R.string.delete) { _, _ ->
                 prefsManager.deleteHydrationIntake(intake.id)
                 loadHydrationData()
+                // Update widget
+                HabitProgressWidget.updateAllWidgets(requireContext())
             }
             .setNegativeButton(R.string.cancel, null)
             .show()

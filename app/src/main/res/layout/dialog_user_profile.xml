@@ -15,9 +15,10 @@
             android:id="@+id/dialogTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
             android:text="@string/user_profile"
             android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-            android:layout_marginBottom="@dimen/spacing_medium" />
+            android:textStyle="bold" />
 
         <!-- Profile Picture Section -->
         <LinearLayout

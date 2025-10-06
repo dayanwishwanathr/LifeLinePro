@@ -13,6 +13,7 @@ import com.ecotracker.lifelinepro.data.models.UserProfile
 import com.ecotracker.lifelinepro.data.repository.SharedPreferencesManager
 import com.ecotracker.lifelinepro.databinding.FragmentHomeBinding
 import com.ecotracker.lifelinepro.databinding.DialogUserProfileBinding
+import com.ecotracker.lifelinepro.widget.HabitProgressWidget
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import android.widget.ArrayAdapter
@@ -128,18 +129,20 @@ class HomeFragment : Fragment() {
             dialog.dismiss()
         }
         
-        dialogBinding.btnSave.setOnClickListener {
-            if (saveUserProfile(dialogBinding)) {
-                dialog.dismiss()
-                // Refresh the header to show updated name
-                setupHeader()
-                android.widget.Toast.makeText(
-                    requireContext(),
-                    "Profile saved successfully",
-                    android.widget.Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
+         dialogBinding.btnSave.setOnClickListener {
+             if (saveUserProfile(dialogBinding)) {
+                 dialog.dismiss()
+                 // Refresh the header to show updated name
+                 setupHeader()
+                 // Update widget to reflect profile changes
+                 HabitProgressWidget.updateAllWidgets(requireContext())
+                 android.widget.Toast.makeText(
+                     requireContext(),
+                     "Profile saved successfully",
+                     android.widget.Toast.LENGTH_SHORT
+                 ).show()
+             }
+         }
         
         dialog.show()
     }
@@ -236,6 +239,8 @@ class HomeFragment : Fragment() {
         if (::prefsManager.isInitialized) {
             setupHeader()
             loadOverallProgress()
+            // Update widget when home screen is viewed
+            HabitProgressWidget.updateAllWidgets(requireContext())
         }
     }
 
@@ -284,6 +289,15 @@ class HomeFragment : Fragment() {
         )
         
         prefsManager.saveUserProfile(profile)
+        
+        // Also update the current authenticated user's full name
+        val currentUser = prefsManager.getCurrentUser()
+        if (currentUser != null) {
+            val updatedUser = currentUser.copy(fullName = fullName)
+            prefsManager.updateAuthUser(updatedUser)
+            prefsManager.setCurrentUser(updatedUser)
+        }
+        
         return true
     }
 

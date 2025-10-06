@@ -64,16 +64,14 @@ class SettingsFragment : Fragment() {
             showUserProfileDialog()
         }
         
-        // Auto-save when water goal changes
-        binding.waterGoalInput.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                saveWaterGoal()
-            }
+        // Save button for water goal
+        binding.btnSaveWaterGoal.setOnClickListener {
+            saveWaterGoal()
         }
         
         // Auto-save when notifications toggle changes
         binding.notificationsSwitch.setOnCheckedChangeListener { _, _ ->
-            saveWaterGoal()
+            saveNotificationsSetting()
         }
     }
 
@@ -90,7 +88,21 @@ class SettingsFragment : Fragment() {
         
         val currentSettings = prefsManager.getUserSettings()
         val updatedSettings = currentSettings.copy(
-            dailyWaterGoalMl = waterGoal,
+            dailyWaterGoalMl = waterGoal
+        )
+        
+        prefsManager.saveUserSettings(updatedSettings)
+        
+        android.widget.Toast.makeText(
+            requireContext(),
+            "Water goal saved successfully",
+            android.widget.Toast.LENGTH_SHORT
+        ).show()
+    }
+    
+    private fun saveNotificationsSetting() {
+        val currentSettings = prefsManager.getUserSettings()
+        val updatedSettings = currentSettings.copy(
             notificationsEnabled = binding.notificationsSwitch.isChecked
         )
         
@@ -98,7 +110,7 @@ class SettingsFragment : Fragment() {
         
         android.widget.Toast.makeText(
             requireContext(),
-            "Settings saved",
+            "Notification settings saved",
             android.widget.Toast.LENGTH_SHORT
         ).show()
     }

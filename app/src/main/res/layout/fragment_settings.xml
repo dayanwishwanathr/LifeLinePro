@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
             android:text="@string/settings_title"
             android:textAppearance="@style/TextAppearance.LifeLinePro.Headline"
-            android:layout_marginBottom="@dimen/spacing_medium" />
+            android:textStyle="bold" />
 
         <!-- 1. User Profile Button Card -->
         <com.google.android.material.card.MaterialCardView
@@ -30,25 +31,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_medium">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:text="@string/user_profile"
                     android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-                    android:layout_marginBottom="@dimen/spacing_medium" />
+                    android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnUserProfile"
                     style="@style/Widget.Material3.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
                     android:text="User Profile"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/primary"
                     app:icon="@drawable/ic_person"
                     app:iconTint="@color/white" />
 
@@ -72,26 +74,47 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:text="Daily Water Goal"
                     android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-                    android:layout_marginBottom="@dimen/spacing_medium" />
+                    android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/daily_water_goal"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/waterGoalInput"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:maxLines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/spacing_small"
+                        android:hint="@string/daily_water_goal"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/waterGoalInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveWaterGoal"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/primary"
+                        android:minWidth="80dp" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -113,9 +136,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:text="@string/notifications"
                     android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-                    android:layout_marginBottom="@dimen/spacing_medium" />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -156,9 +180,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:text="@string/data_management"
                     android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-                    android:layout_marginBottom="@dimen/spacing_medium" />
+                    android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnExportData"
@@ -189,9 +214,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:text="Account"
                     android:textAppearance="@style/TextAppearance.LifeLinePro.Title"
-                    android:layout_marginBottom="@dimen/spacing_medium" />
+                    android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogout"
